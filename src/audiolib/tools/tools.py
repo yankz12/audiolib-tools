@@ -33,7 +33,6 @@ def float_to_uint(arr_float, uint_bit_depth):
 
 def wav_to_dict(fnames, ):
     files = {}
-    float_sig = {}
     if type(fnames) is str:
         fnames = [fnames]
     for fname in fnames:
@@ -43,18 +42,16 @@ def wav_to_dict(fnames, ):
             to_float = sint_to_float
         elif dt.startswith('uint'):
             to_float = uint_to_float
-        bit_depth = int(str(wav[1].dtype)[-2:])
+        bit_depth = int(''.join([s for s in str(wav[1].dtype) if s.isdigit()]))
+        num_chs = np.size(wav[1][0])
         files[fname] = wav
-        fs = wav[0]
-        is_stereo = True if np.size(wav[1][0]) == 2 else False
-        if is_stereo:
-            left = to_float(files[fname][1][:, 0], bit_depth)
-            right = to_float(files[fname][1][:, 1], bit_depth)
-            float_sig[fname] = [fs, left, right,]
-        else:
-            left = np.array(files[fname][1])/((2**15)-1)
-            float_sig[fname] = [fs, left,]
-        files[fname] = float_sig[fname]
+        file_dict = {
+            'fs' : wav[0],
+            'initial_bit_depth' : bit_depth,
+        }
+        for ch in np.arange(num_chs):
+            file_dict[f'ch{ch}'] = to_float(files[fname][1][:, ch], bit_depth)
+        files[fname] = file_dict
     return files
 
 def write_wav(fname, fs, data_dtype, wav_dtype, data,):
