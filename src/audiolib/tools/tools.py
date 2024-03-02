@@ -147,4 +147,4 @@ def write_wav(fname, data, data_dtype, fs, wav_dtype,):
         data = np.array(float_to_sint(data, bit_depth))
     # TODO finish here parsing the dtypes
     out = np.transpose(np.array(data)).astype(wav_dtype)
-    scio.write(fname, fs, out.astype(np.int16))
+    scio.write(filename=fname, rate=fs, data=out.astype(np.int16))
