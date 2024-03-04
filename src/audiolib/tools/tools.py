@@ -3,6 +3,26 @@ import numpy as np
 import scipy.signal as scsp
 import scipy.io.wavfile as scio
 
+def calc_time_vec(sig_len, fs):
+    """
+    Create time vector from sig length and sampling freq
+
+    Parameters
+    ----------
+    sig_len : int
+        Length of the signal in samples, starting with 0
+    fs : int
+        Sampling frequency
+    
+    Returns
+    -------
+    t : numpy array
+        Time Vector [s]
+    """
+    sig_dur = sig_len/fs
+    t = np.arange(0, sig_dur, 1/fs)
+    return t
+
 def uint_to_float(arr_uint, int_bit_depth):
     """
     Turns array of unsigned intergers to array of float

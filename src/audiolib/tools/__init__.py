@@ -4,7 +4,8 @@ from .tools import (
     float_to_sint,
     float_to_uint,
     wav_to_dict,  
-    write_wav,  
+    write_wav,
+    calc_time_vec,  
 )
 
 __all__ = [
@@ -14,4 +15,5 @@ __all__ = [
     'float_to_uint',
     'wav_to_dict',
     'write_wav',
+    'calc_time_vec',
 ]
