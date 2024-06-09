@@ -4,7 +4,7 @@ import scipy.signal as scsp
 import scipy.io.wavfile as scio
 
 def closest_idx_to_val(arr, val):
-    return np.argmin(np.abs(arr - val))
+    return np.argmin(np.abs(np.array(arr) - val))
 
 def calc_time_vec(sig_len, fs):
     """
