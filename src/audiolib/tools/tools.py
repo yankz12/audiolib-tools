@@ -3,6 +3,9 @@ import numpy as np
 import scipy.signal as scsp
 import scipy.io.wavfile as scio
 
+def closest_idx_to_val(arr, val):
+    return np.argmin(np.abs(arr - val))
+
 def calc_time_vec(sig_len, fs):
     """
     Create time vector from sig length and sampling freq

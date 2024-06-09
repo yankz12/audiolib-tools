@@ -1,4 +1,5 @@
 from .tools import (
+    closest_idx_to_val,
     uint_to_float,
     sint_to_float,
     float_to_sint,
@@ -9,6 +10,7 @@ from .tools import (
 )
 
 __all__ = [
+    'closest_idx_to_val',
     'uint_to_float',
     'sint_to_float',
     'float_to_sint',
