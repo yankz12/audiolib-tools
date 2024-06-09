@@ -3,6 +3,26 @@ import numpy as np
 import scipy.signal as scsp
 import scipy.io.wavfile as scio
 
+def read_intac_txt(fname, ):
+    with open(fname, 'r') as file:
+        data = {}
+        lines = file.readlines()
+
+        # Extract column names from the first row
+        column_names = lines[0].strip().split('\t')
+
+        # Initialize empty lists for each column
+        for column_name in column_names:
+            data[column_name] = []
+        # Iterate through the rest of the rows and add data to the corresponding column lists
+        for line in lines[1:]:
+            values = line.strip().split('\t')
+            print(values)
+            for i in range(len(column_names)):
+                data[column_names[i]].append(float(values[i]))
+
+        return data
+
 def closest_idx_to_val(arr, val):
     return np.argmin(np.abs(np.array(arr) - val))
 

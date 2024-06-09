@@ -6,7 +6,8 @@ from .tools import (
     float_to_uint,
     wav_to_dict,  
     write_wav,
-    calc_time_vec,  
+    calc_time_vec,
+    read_intac_txt,
 )
 
 __all__ = [
@@ -18,4 +19,5 @@ __all__ = [
     'wav_to_dict',
     'write_wav',
     'calc_time_vec',
+    'read_intac_txt',
 ]
