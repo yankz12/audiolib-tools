@@ -17,7 +17,6 @@ def read_intac_txt(fname, ):
         # Iterate through the rest of the rows and add data to the corresponding column lists
         for line in lines[1:]:
             values = line.strip().split('\t')
-            print(values)
             for i in range(len(column_names)):
                 data[column_names[i]].append(float(values[i]))
 
