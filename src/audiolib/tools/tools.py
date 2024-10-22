@@ -4,6 +4,30 @@ import scipy.signal as scsp
 import scipy.io.wavfile as scio
 
 def read_intac_txt(fname, ):
+    """
+    Convert INTAC .txt files to Python dictionary
+
+    Parameters
+    ----------
+    fname : str
+        Filename including directory of the txt file
+    
+    Returns
+    -------
+    data : dict
+        Dictionary that contains all colums inside the txt file as individual
+        dictionary entry.
+
+    Example
+    -------
+    Read Power spectrum INTAC txt file that conatins columns "Freq (Hz)" and
+    "u(V^2 )":
+    >>> fname = "PowerSpectrum.txt"
+    >>> intac_dict = audiolib.tools.read_intac_txt(fname=fname)
+    >>> freq = intac_dict["Freq (Hz)"]
+    >>> power_spec = intac_dict["u(V^2 )"]
+
+    """
     with open(fname, 'r') as file:
         data = {}
         lines = file.readlines()
