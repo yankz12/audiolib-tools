@@ -186,7 +186,7 @@ def wav_to_dict(fnames, ):
             'initial_bit_depth' : bit_depth,
         }
         for ch in np.arange(num_chs):
-            if ch == 0:
+            if num_chs == 1:
                 file_dict[f'ch{ch}'] = to_float(files_dict[fname][1], bit_depth)  
             else:
                 file_dict[f'ch{ch}'] = to_float(files_dict[fname][1][:, ch], bit_depth)
