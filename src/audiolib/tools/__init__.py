@@ -8,6 +8,7 @@ from .tools import (
     write_wav,
     calc_time_vec,
     read_intac_txt,
+    print_progress_bar,
 )
 
 __all__ = [
@@ -20,4 +21,5 @@ __all__ = [
     'write_wav',
     'calc_time_vec',
     'read_intac_txt',
+    'print_progress_bar',
 ]

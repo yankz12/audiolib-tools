@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np 
 import scipy.signal as scsp
 import scipy.io.wavfile as scio
+import sys
 
 def read_intac_txt(fname, ):
     """
@@ -217,3 +218,29 @@ def write_wav(fname, data, data_dtype, fs, wav_dtype,):
     # TODO finish here parsing the dtypes
     out = np.transpose(np.array(data)).astype(wav_dtype)
     scio.write(filename=fname, rate=fs, data=out.astype(np.int16))
+
+def print_progress_bar(iteration, total, length=50, barname=''):
+    """
+    Displays a progress bar in the console.
+
+    Parameters
+    ----------
+        iteration (int): Current iteration number.
+        total (int): Total number of iterations.
+        length (int, optional): Length of the progress bar. Default is 50.
+
+    Raises:
+        ValueError: If iteration is greater than total.
+
+    Example:
+        total_iterations = 100
+        for i in range(total_iterations):
+            time.sleep(0.1)  # Simulate work
+            print_progress_bar(i + 1, total_iterations)
+        print("\nDone!")
+    """
+    percent = ("{0:.1f}").format(100 * (iteration / float(total)))
+    filled_length = int(length * iteration // total)
+    bar = '█' * filled_length + '-' * (length - filled_length)
+    sys.stdout.write(f'\r{barname} Progress: |{bar}| {percent}% Complete')
+    sys.stdout.flush()
